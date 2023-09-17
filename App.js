@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native'
-import Login from './Login'
+import CountriesPage from './CountriesPage'
 
 export default function App() {
-  return <Login />
+  return <CountriesPage />
 }
 
 const styles = StyleSheet.create({
