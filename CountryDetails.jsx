@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import { SafeAreaView } from 'react-native'
 
-const countryInfoDetails = ({ country }) => {
+const CountryDetails = ({ country }) => {
   const [countryInfo, setCountryInfo] = useState(second)
 
   useEffect(() => {
@@ -93,4 +93,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default countryInfoDetails
+export default CountryDetails
