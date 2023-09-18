@@ -1,22 +1,48 @@
-import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native'
+import {
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+} from "react-native";
 const MoreDetails = ({ route }) => {
-  const country = route.params.country
+  const country = route.params.country;
   return (
     <SafeAreaView
       style={{
-        backgroundColor: 'lightgray',
+        backgroundColor: "lightgray",
         marginTop: 32,
         marginHorizontal: 16,
         padding: 8,
       }}
     >
+      <View
+        style={{
+          paddingTop: 16,
+          paddingBottom: 16,
+          marginBottom: 30,
+          borderRadius: 10,
+          backgroundColor: "gray",
+          boxSizing: "border-box",
+        }}
+      >
+        <Image
+          style={{
+            width: 200,
+            height: 200,
+            alignSelf: "center",
+          }}
+          source={{ uri: `${country.flags.png}` }}
+        />
+      </View>
       <View style={styles.item}>
         <Text style={styles.formItemTitle}>Sigla: </Text>
         <Text>{country.cca2}</Text>
       </View>
       <View style={styles.item}>
         <Text style={styles.formItemTitle}>País independente: </Text>
-        <Text>{country.independent ? 'Sim' : 'Não'}</Text>
+        <Text>{country.independent ? "Sim" : "Não"}</Text>
       </View>
 
       <View style={styles.item}>
@@ -24,8 +50,8 @@ const MoreDetails = ({ route }) => {
         <Text>{country.subregion}</Text>
       </View>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -42,20 +68,20 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 4,
-    backgroundColor: 'cyan',
-    alignItems: 'center',
+    backgroundColor: "cyan",
+    alignItems: "center",
     borderRadius: 4,
   },
   buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
   },
   formItemTitle: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   item: {
     marginBottom: 8,
   },
-})
+});
 
-export default MoreDetails
+export default MoreDetails;
