@@ -1,17 +1,17 @@
 import axios from 'axios'
-import { useEffect } from 'react'
-import { SafeAreaView } from 'react-native'
+import { useEffect, useState } from 'react'
+import { SafeAreaView, StatusBar, StyleSheet, Text, View } from 'react-native'
 
-const CountryDetails = ({ country }) => {
-  const [countryInfo, setCountryInfo] = useState(second)
+const CountryDetails = ({ route, navigation }) => {
+  const [countryInfo, setCountryInfo] = useState()
 
   useEffect(() => {
     const getCountry = async () => {
       try {
         const { data } = await axios.get(
-          `https://restcountries.com/v3.1/name/${country}`,
+          `https://restcountries.com/v3.1/name/${route.params.countryName}`,
         )
-        setCountryInfo(data)
+        setCountryInfo(data[0])
       } catch (error) {
         console.error(error)
       }
@@ -24,7 +24,7 @@ const CountryDetails = ({ country }) => {
       {countryInfo && countryInfo.name ? (
         <View
           style={{
-            backgroundColor: 'gray',
+            backgroundColor: 'lightgray',
             marginTop: 32,
             marginHorizontal: 16,
             padding: 8,
@@ -38,10 +38,7 @@ const CountryDetails = ({ country }) => {
             <Text style={styles.formItemTitle}>Região: </Text>
             <Text>{countryInfo.region}</Text>
           </View>
-          <View style={styles.item}>
-            <Text style={styles.formItemTitle}>Subregião: </Text>
-            <Text>{countryInfo.subregion}</Text>
-          </View>
+
           <View style={styles.item}>
             <Text style={styles.formItemTitle}>Area: </Text>
             <Text>{countryInfo.area}</Text>
@@ -54,6 +51,14 @@ const CountryDetails = ({ country }) => {
             <Text style={styles.formItemTitle}>Capital: </Text>
             <Text>{countryInfo.capital}</Text>
           </View>
+          <Text
+            style={{ textDecorationLine: 'underline', color: 'blue' }}
+            onPress={() =>
+              navigation.navigate('MoreDetails', { country: countryInfo })
+            }
+          >
+            Mais informações
+          </Text>
         </View>
       ) : (
         <></>

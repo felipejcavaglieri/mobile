@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react'
 import {
   SafeAreaView,
   StyleSheet,
@@ -6,11 +6,11 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-} from "react-native";
+} from 'react-native'
 
-const Login = () => {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+const Login = ({ navigation }) => {
+  const [login, setLogin] = useState('')
+  const [password, setPassword] = useState('')
 
   return (
     <SafeAreaView>
@@ -20,52 +20,53 @@ const Login = () => {
           style={styles.input}
           onChangeText={setLogin}
           value={login}
-          placeholder={"Usuário"}
+          placeholder={'Usuário'}
         />
         <TextInput
           style={styles.input}
           onChangeText={setPassword}
           value={password}
-          placeholder={"Senha"}
+          placeholder={'Senha'}
           secureTextEntry={true}
         />
         <TouchableOpacity
           style={styles.loginButton}
           disabled={!login || !password}
+          onPress={() => navigation.navigate('Home')}
         >
-          <Text style={{ textAlign: "center" }}>Login</Text>
+          <Text style={{ textAlign: 'center' }}>Login</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "gray",
+    backgroundColor: 'gray',
     padding: 24,
     borderRadius: 10,
     margin: 24,
   },
   welcome: {
-    color: "black",
-    fontWeight: "bold",
-    marginTop: "50%",
+    color: 'black',
+    fontWeight: 'bold',
+    marginTop: '50%',
     fontSize: 20,
-    textAlign: "center",
+    textAlign: 'center',
   },
   input: {
     padding: 8,
-    backgroundColor: "lightgray",
+    backgroundColor: 'lightgray',
     borderRadius: 10,
     marginBottom: 24,
   },
   loginButton: {
-    backgroundColor: "lightblue",
+    backgroundColor: 'lightblue',
     padding: 8,
     borderRadius: 10,
-    marginTop: "10%",
+    marginTop: '10%',
   },
-});
+})
 
-export default Login;
+export default Login
